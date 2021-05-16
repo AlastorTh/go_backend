@@ -10,7 +10,7 @@ services:
         volumes: 
          - ./mongo-volume:/data/db
          - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-        command: --quiet
+        command: mongod -quiet
     app:
         build: .
         ports: 
