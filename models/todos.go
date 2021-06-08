@@ -1,10 +1,11 @@
 package models
 
 type Todo struct {
-	UserID    int         `json:"userId" bson:"userId"`
-	ID        interface{} `json:"id,omitempty" bson:"_id,omitempty"`
-	Title     string      `json:"title" bson:"title"`
-	Completed bool        `json:"completed" bson:"completed"`
+	UserID      int         `json:"userId" bson:"userId"`
+	ID          interface{} `json:"id,omitempty" bson:"_id,omitempty"`
+	Title       string      `json:"title" bson:"title"`
+	Description string      `json:"description" bson:"description"`
+	Completed   bool        `json:"completed" bson:"completed"`
 }
 
 type TodoUpdate struct {
