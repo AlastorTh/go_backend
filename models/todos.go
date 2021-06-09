@@ -1,7 +1,7 @@
 package models
 
 type Todo struct {
-	UserID      int         `json:"userId" bson:"userId"`
+	//UserID      int         `json:"userId" bson:"userId"`
 	ID          interface{} `json:"id,omitempty" bson:"_id,omitempty"`
 	Title       string      `json:"title" bson:"title"`
 	Description string      `json:"description" bson:"description"`

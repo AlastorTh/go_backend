@@ -16,6 +16,7 @@ func SearchTodo(db database.TodoInterface) http.HandlerFunc {
 			err := json.Unmarshal([]byte(query), &filter)
 			if err != nil {
 				WriteResponse(w, http.StatusBadRequest, err.Error())
+				return
 			}
 		}
 
