@@ -25,7 +25,7 @@ func main() {
 	router.HandleFunc("/task", handlers.SearchTodo(client)).Methods("GET", "OPTIONS")
 	router.HandleFunc("/task/{id}", handlers.GetTodo(client)).Methods("GET", "OPTIONS")
 	router.HandleFunc("/task", handlers.InsertTodo(client)).Methods("POST", "OPTIONS")
-	router.HandleFunc("/task/{id}", handlers.UpdateTodo(client)).Methods("PATCH", "OPTIONS")
-	router.HandleFunc("/task/{id}", handlers.DeleteTodo(client)).Methods("DELETE", "OPTIONS")
+	//router.HandleFunc("/task/{id}", handlers.UpdateTodo(client)).Methods("PATCH", "OPTIONS")
+	//router.HandleFunc("/task/{id}", handlers.DeleteTodo(client)).Methods("DELETE", "OPTIONS")
 	http.ListenAndServe(":8080", router)
 }

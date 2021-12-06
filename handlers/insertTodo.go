@@ -11,7 +11,7 @@ import (
 
 func InsertTodo(db database.TodoInterface) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		todo := models.Todo{}
+		todo := models.User{}
 
 		body, err := ioutil.ReadAll(r.Body)
 		if err != nil {

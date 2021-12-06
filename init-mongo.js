@@ -1,1 +1,1 @@
-db.createCollection("Todos")
+db.createCollection("Users")

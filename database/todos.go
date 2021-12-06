@@ -2,7 +2,6 @@ package database
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/AlastorTh/go_backend/models"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -11,11 +10,11 @@ import (
 )
 
 type TodoInterface interface {
-	Insert(models.Todo) (models.Todo, error)
-	Update(string, interface{}) (models.TodoUpdate, error)
-	Delete(string) (models.TodoDelete, error)
-	Get(string) (models.Todo, error)
-	Search(interface{}) ([]models.Todo, error)
+	Insert(models.User) (models.User, error)
+	//Update(string, interface{}) (models.User, error)
+	//Delete(string) (models.User, error)
+	Get(string) (models.User, error)
+	Search(interface{}) ([]models.User, error)
 }
 
 type TodoClient struct {
@@ -23,8 +22,8 @@ type TodoClient struct {
 	Col *mongo.Collection
 }
 
-func (c *TodoClient) Insert(docs models.Todo) (models.Todo, error) {
-	todo := models.Todo{}
+func (c *TodoClient) Insert(docs models.User) (models.User, error) {
+	todo := models.User{}
 
 	res, err := c.Col.InsertOne(c.Ctx, docs)
 	if err != nil {
@@ -33,7 +32,8 @@ func (c *TodoClient) Insert(docs models.Todo) (models.Todo, error) {
 	id := res.InsertedID.(primitive.ObjectID).Hex()
 	return c.Get(id)
 }
-func (c *TodoClient) Update(id string, update interface{}) (models.TodoUpdate, error) {
+
+/* func (c *TodoClient) Update(id string, update interface{}) (models.TodoUpdate, error) {
 	result := models.TodoUpdate{
 		ModifiedCount: 0,
 	}
@@ -93,9 +93,9 @@ func (c *TodoClient) Delete(id string) (models.TodoDelete, error) {
 	}
 	result.DeletedCount = res.DeletedCount
 	return result, nil
-}
-func (c *TodoClient) Get(id string) (models.Todo, error) {
-	todo := models.Todo{}
+} */
+func (c *TodoClient) Get(id string) (models.User, error) {
+	todo := models.User{}
 
 	_id, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
@@ -109,8 +109,8 @@ func (c *TodoClient) Get(id string) (models.Todo, error) {
 
 	return todo, nil
 }
-func (c *TodoClient) Search(filter interface{}) ([]models.Todo, error) {
-	todos := []models.Todo{}
+func (c *TodoClient) Search(filter interface{}) ([]models.User, error) {
+	todos := []models.User{}
 	if filter == nil {
 		filter = bson.M{}
 	}
@@ -121,7 +121,7 @@ func (c *TodoClient) Search(filter interface{}) ([]models.Todo, error) {
 	}
 
 	for cursor.Next(c.Ctx) {
-		row := models.Todo{}
+		row := models.User{}
 		cursor.Decode(&row)
 		todos = append(todos, row)
 	}
